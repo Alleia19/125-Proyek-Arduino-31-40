@@ -1,0 +1,27 @@
+<html>
+	<head>
+		<title>Kontrol LED </title>
+	</head>
+	<body>
+	<h1> <b> Kontrol LED via Internet Inkubatek jogja </b> </h1>
+
+	
+	<!-- in the <button> tags below the ID attribute is the value sent to the arduino -->
+	
+	<button id="4" class="led">Relay 1</button> <!-- button for pin 4 -->
+	<button id="5" class="led">Relay 2</button> <!-- button for pin 5 -->
+	<button id="6" class="led">Relay 3</button> <!-- button for pin 6 -->
+	<button id="7" class="led">Relay 4</button> <!-- button for pin 7 -->
+		
+	<script src="jquery.min.js"></script>
+	<script type="text/javascript">
+		$(document).ready(function(){
+			$(".led").click(function(){
+				var p = $(this).attr('id'); // get id value (i.e. pin13, pin12, or pin11)
+				// send HTTP GET request to the IP address with the parameter "pin" and value "p", then execute the function
+				$.get("http://192.168.43.162/", {pin:p}); // execute get request
+			});
+		});
+	</script>
+	</body>
+</html>
